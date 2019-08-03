@@ -19,9 +19,9 @@ class ProviderAccountController extends Controller
 
     /**
      * list of added accounts .
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getIndex(): \Laravel\Lumen\Http\ResponseFactory
+    public function getIndex(): \Illuminate\Http\JsonResponse
     {
         $provider_accounts = ProviderAccount::orderBy('created_at', "DESC")->get();
         return response()->json(['code' => '00', 'data' => $provider_accounts], 200, ['Content-Type' => 'application/json']);
@@ -29,9 +29,9 @@ class ProviderAccountController extends Controller
 
     /**
      * Info for adding account.
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getAddAccount(): \Laravel\Lumen\Http\ResponseFactory
+    public function getAddAccount(): \Illuminate\Http\JsonResponse
     {
         return response()->json();
     }
@@ -39,18 +39,18 @@ class ProviderAccountController extends Controller
     /**
      * adding account.
      * @param ProviderAccountRequest
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function postAddAccount(ProviderAccountRequest $request): \Laravel\Lumen\Http\ResponseFactory
+    public function postAddAccount(ProviderAccountRequest $request): \Illuminate\Http\JsonResponse
     {
         return response()->json();
     }
 
     /**
      * Get the Account to edit.
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getEditAccount(Request $request, int $account_id): \Laravel\Lumen\Http\ResponseFactory
+    public function getEditAccount(Request $request, int $account_id): \Illuminate\Http\JsonResponse
     {
         return response()->json();
     }
@@ -58,9 +58,9 @@ class ProviderAccountController extends Controller
     /**
      * Editing Account.
      * @param ProviderAccountRequest
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditAccount(ProviderAccountRequest $request, int $account_id): \Laravel\Lumen\Http\ResponseFactory
+    public function postEditAccount(ProviderAccountRequest $request, int $account_id): \Illuminate\Http\JsonResponse
     {
         return response()->json();
     }

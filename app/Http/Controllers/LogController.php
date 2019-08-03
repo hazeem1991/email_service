@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Models\Log;
+
 class LogController extends Controller
 {
     /**
@@ -17,11 +19,11 @@ class LogController extends Controller
     /**
      * Return  list of the log .
      *
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getIndex():\Laravel\Lumen\Http\ResponseFactory
+    public function getIndex(): \Illuminate\Http\JsonResponse
     {
-        $log=Log::orderBy('created_at',"DESC")->get();
-        return response()->json(['code'=>'00','data'=> $log],200,['Content-Type'=>'application/json']);
+        $log = Log::orderBy('created_at', "DESC")->get();
+        return response()->json(['code' => '00', 'data' => $log], 200, ['Content-Type' => 'application/json']);
     }
 }

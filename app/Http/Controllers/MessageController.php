@@ -20,9 +20,9 @@ class MessageController extends Controller
     /**
      * list of the messages that was sent .
      *
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getIndex(): \Laravel\Lumen\Http\ResponseFactory
+    public function getIndex(): \Illuminate\Http\JsonResponse
     {
         $messages = Message::orderBy('created_at', "DESC")->get();
         return response()->json(['code' => '00', 'data' => $messages], 200, ['Content-Type' => 'application/json']);
@@ -31,9 +31,9 @@ class MessageController extends Controller
     /**
      * the info that needed to add message .
      *
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getAddMessageForm(): \Laravel\Lumen\Http\ResponseFactory
+    public function getAddMessageForm(): \Illuminate\Http\JsonResponse
     {
         return response()->json();
     }
@@ -41,9 +41,9 @@ class MessageController extends Controller
     /**
      * add the message to the database .
      * @param MessageRequest
-     * @return \Laravel\Lumen\Http\ResponseFactory
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function postAddMessageForm(MessageRequest $request): \Laravel\Lumen\Http\ResponseFactory
+    public function postAddMessageForm(MessageRequest $request): \Illuminate\Http\JsonResponse
     {
         return response()->json();
     }

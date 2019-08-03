@@ -23,6 +23,7 @@ class Messages extends Migration
             $table->longText('body');
             $table->string('recipients',500);
             $table->string('subject');
+            $table->string('status');
             $table->string('sender');
             $table->timestamps();
 

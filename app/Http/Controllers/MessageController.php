@@ -49,7 +49,8 @@ class MessageController extends Controller
     {
         $data=$request->validated();
         $data['recipients']=implode(",",$data['recipients']);
-        $message=Message::create($data);\
+        $data=$data+['status'=>0];
+        $message=Message::create($data);
         dispatch(new EmailSenderJob($message));
         return response()->json(['code' => '00', 'msg' => "added_successfully"], 200, ['Content-Type' => 'application/json']);
     }

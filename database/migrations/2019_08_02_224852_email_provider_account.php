@@ -20,6 +20,7 @@ class EmailProviderAccount extends Migration
             $table->collation = 'utf8_general_ci';
             $table->bigIncrements('id');
             $table->integer('status');
+            $table->integer('priority');
             $table->string('type');
             $table->string('user_name');
             $table->string('password');

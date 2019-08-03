@@ -24,6 +24,8 @@ class EmailSenderJob extends Job
      */
     public function handle()
     {
+        $this->message->status=1;
+        $this->message->save();
         dd($this->message);
     }
 }

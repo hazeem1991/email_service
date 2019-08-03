@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Requests;
 /**
- * Class ProviderAccount.
+ * Class Message.
  */
 class Message extends FormRequest
 {
@@ -36,6 +36,8 @@ class Message extends FormRequest
      */
     public function messages()
     {
-        return [];
+        return [
+
+        ];
     }
 }

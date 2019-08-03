@@ -40,7 +40,7 @@ collect(scandir(__DIR__ . '/../config'))->each(function ($item) use ($app) {
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    App\Exceptions\CustomHandler::class
 );
 
 $app->singleton(
@@ -78,7 +78,8 @@ $app->singleton(
 |
 */
 
- $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\FormRequestServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->make('queue');

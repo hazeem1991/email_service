@@ -35,7 +35,8 @@ class MessageController extends Controller
      */
     public function getAddMessageForm(): \Illuminate\Http\JsonResponse
     {
-        return response()->json();
+        $message_types=\MainServiceProvider::getMessageTypes();
+        return response()->json(['code' => '00', 'data' => ["message_types"=>$message_types]], 200, ['Content-Type' => 'application/json']);
     }
 
     /**
@@ -45,7 +46,9 @@ class MessageController extends Controller
      */
     public function postAddMessageForm(MessageRequest $request): \Illuminate\Http\JsonResponse
     {
-        return response()->json();
+        $data=$request->validated();
+        $message=Message::create($data);
+        return response()->json(['code' => '00', 'msg' => "added_successfully"], 200, ['Content-Type' => 'application/json']);
     }
 
 }

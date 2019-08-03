@@ -33,8 +33,8 @@ class ProviderAccountController extends Controller
      */
     public function getAddAccount(): \Illuminate\Http\JsonResponse
     {
-        $email_providers=\MainServiceProvider::getSenders();
-        return response()->json(['code' => '00', 'data' => ["email_providers"=>$email_providers]], 200, ['Content-Type' => 'application/json']);
+        $email_providers = \MainServiceProvider::getSenders();
+        return response()->json(['code' => '00', 'data' => ["email_providers" => $email_providers]], 200, ['Content-Type' => 'application/json']);
     }
 
     /**
@@ -44,9 +44,9 @@ class ProviderAccountController extends Controller
      */
     public function postAddAccount(ProviderAccountRequest $request): \Illuminate\Http\JsonResponse
     {
-        $data=$request->validated();
-        $provider=ProviderAccount::create($data);
-        return response()->json(['code' => '00','msg'=>"added_successfully", 'data' => ["added_provider"=>$provider]], 200, ['Content-Type' => 'application/json']);
+        $data = $request->validated();
+        $provider = ProviderAccount::create($data);
+        return response()->json(['code' => '00', 'msg' => "added_successfully", 'data' => ["added_provider" => $provider]], 200, ['Content-Type' => 'application/json']);
 
     }
 
@@ -57,8 +57,8 @@ class ProviderAccountController extends Controller
      */
     public function getEditAccount(int $account_id): \Illuminate\Http\JsonResponse
     {
-        $provider=ProviderAccount::findOrfail($account_id);
-        return response()->json(['code' => '00', 'data' => ["provider"=>$provider]], 200, ['Content-Type' => 'application/json']);
+        $provider = ProviderAccount::findOrfail($account_id);
+        return response()->json(['code' => '00', 'data' => ["provider" => $provider]], 200, ['Content-Type' => 'application/json']);
     }
 
     /**
@@ -69,12 +69,13 @@ class ProviderAccountController extends Controller
      */
     public function postEditAccount(ProviderAccountRequest $request, int $account_id): \Illuminate\Http\JsonResponse
     {
-        $data=$request->validated();
-        $provider=ProviderAccount::findOrfail($account_id);
+        $data = $request->validated();
+        $provider = ProviderAccount::findOrfail($account_id);
         $provider->update($data);
         $provider->save();
-        return response()->json(['code' => '00','msg'=>"edited_successfully", 'data' => ["edited_provider"=>$provider]], 200, ['Content-Type' => 'application/json']);
+        return response()->json(['code' => '00', 'msg' => "edited_successfully", 'data' => ["edited_provider" => $provider]], 200, ['Content-Type' => 'application/json']);
     }
+
     /**
      * Delete Account.
      * @param int $account_id
@@ -82,9 +83,9 @@ class ProviderAccountController extends Controller
      */
     public function deleteDeleteAccount(int $account_id): \Illuminate\Http\JsonResponse
     {
-        $provider=ProviderAccount::findOrfail($account_id);
+        $provider = ProviderAccount::findOrfail($account_id);
         $provider->delete();
-        return response()->json(['code' => '00','msg'=>"delete_successfully"], 200, ['Content-Type' => 'application/json']);
+        return response()->json(['code' => '00', 'msg' => "delete_successfully"], 200, ['Content-Type' => 'application/json']);
     }
 
 }

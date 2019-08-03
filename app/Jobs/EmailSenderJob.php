@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Jobs;
+
 use Illuminate\Queue\InteractsWithQueue;
 use App\Http\Models\Message;
+use App\Http\Models\ProviderAccount;
+use App\Http\Libraries\MailSenders\MailerFactory;
 class EmailSenderJob extends Job
 {
     use InteractsWithQueue;
@@ -12,9 +15,10 @@ class EmailSenderJob extends Job
      * @return void
      */
     public $message;
+
     public function __construct(Message $message)
     {
-        $this->message=$message;
+        $this->message = $message;
     }
 
     /**
@@ -24,8 +28,12 @@ class EmailSenderJob extends Job
      */
     public function handle()
     {
-        $this->message->status=1;
+        $this->message->status = 1;
         $this->message->save();
-        dd($this->message);
+        $accounts = ProviderAccount::where("status", "=", 1)->orderBy('priority', "ASC")->get();
+        foreach ($accounts as $account) {
+            $mailer=MailerFactory::getMailer($account);
+            dump($mailer);
+        }
     }
 }

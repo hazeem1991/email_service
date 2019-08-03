@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Laravel\Lumen\Http\Request;
+use App\Http\Requests\Message as MessageRequest;
 
 class MessageController extends Controller
 {
@@ -21,25 +21,27 @@ class MessageController extends Controller
      *
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function getIndex():\Laravel\Lumen\Http\ResponseFactory
+    public function getIndex(): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }
+
     /**
      * the info that needed to add message .
      *
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function getAddMessageForm():\Laravel\Lumen\Http\ResponseFactory
+    public function getAddMessageForm(): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }
+
     /**
      * add the message to the database .
-     * @param Request
+     * @param MessageRequest
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function postAddMessageForm(Request $request):\Laravel\Lumen\Http\ResponseFactory
+    public function postAddMessageForm(MessageRequest $request): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }

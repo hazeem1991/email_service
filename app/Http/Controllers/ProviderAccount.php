@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ProviderAccount as ProviderAccountRequest;
 
 class ProviderAccount extends Controller
 {
@@ -55,10 +55,10 @@ class ProviderAccount extends Controller
 
     /**
      * Editing Account.
-     * @param Request
+     * @param ProviderAccount
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function postEditAccount(Request $request, int $account_id): \Laravel\Lumen\Http\ResponseFactory
+    public function postEditAccount(ProviderAccount $request, int $account_id): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Laravel\Lumen\Http\Request;
 
-class MessagesController extends Controller
+class MessageController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -17,7 +17,7 @@ class MessagesController extends Controller
     }
 
     /**
-     * Return list of the messages that was sent .
+     * list of the messages that was sent .
      *
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
@@ -26,7 +26,7 @@ class MessagesController extends Controller
         return response()->json();
     }
     /**
-     * Return  the info that needed to add message .
+     * the info that needed to add message .
      *
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
@@ -35,7 +35,7 @@ class MessagesController extends Controller
         return response()->json();
     }
     /**
-     * Return  add the message to the database .
+     * add the message to the database .
      * @param Request
      * @return \Laravel\Lumen\Http\ResponseFactory
      */

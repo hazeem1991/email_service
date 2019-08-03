@@ -17,27 +17,48 @@ class ProviderAccount extends Controller
     }
 
     /**
-     * Return  list off added accounts .
+     * list of added accounts .
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function getIndex():\Laravel\Lumen\Http\ResponseFactory
+    public function getIndex(): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }
+
     /**
-     * Return  Info for adding account.
+     * Info for adding account.
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function getAddAccount():\Laravel\Lumen\Http\ResponseFactory
+    public function getAddAccount(): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }
+
     /**
-     * Return  Info for adding account.
+     * adding account.
      * @param Request
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function postAddAccount(Request $request):\Laravel\Lumen\Http\ResponseFactory
+    public function postAddAccount(Request $request): \Laravel\Lumen\Http\ResponseFactory
+    {
+        return response()->json();
+    }
+
+    /**
+     * Get the Account to edit.
+     * @return \Laravel\Lumen\Http\ResponseFactory
+     */
+    public function getEditAccount(Request $request, int $account_id): \Laravel\Lumen\Http\ResponseFactory
+    {
+        return response()->json();
+    }
+
+    /**
+     * Editing Account.
+     * @param Request
+     * @return \Laravel\Lumen\Http\ResponseFactory
+     */
+    public function postEditAccount(Request $request, int $account_id): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }

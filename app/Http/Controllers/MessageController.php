@@ -47,6 +47,7 @@ class MessageController extends Controller
     public function postAddMessageForm(MessageRequest $request): \Illuminate\Http\JsonResponse
     {
         $data=$request->validated();
+        $data['recipients']=implode(",",$data['recipients']);
         $message=Message::create($data);
         return response()->json(['code' => '00', 'msg' => "added_successfully"], 200, ['Content-Type' => 'application/json']);
     }

@@ -25,7 +25,8 @@ class Message extends FormRequest
             'sender'=>'required|email',
             'recipients'=>'required|array',
             'recipients.*'=>'email',
-            'type'=>'required',
+            'subject'=>'required',
+            'type'=>'required|in:' . implode(',', \MainServiceProvider::getMessageTypes()),
             'body'=>'required'
         ];
     }

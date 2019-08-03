@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Message as MessageRequest;
+use App\Http\Models\Message;
 
 class MessageController extends Controller
 {
@@ -23,7 +24,8 @@ class MessageController extends Controller
      */
     public function getIndex(): \Laravel\Lumen\Http\ResponseFactory
     {
-        return response()->json();
+        $messages = Message::orderBy('created_at', "DESC")->get();
+        return response()->json(['code' => '00', 'data' => $messages], 200, ['Content-Type' => 'application/json']);
     }
 
     /**

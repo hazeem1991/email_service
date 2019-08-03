@@ -78,10 +78,15 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
-
+$app->make('queue');
+$app->bound('queue');
+$app->withFacades(true, [
+    App\Http\Libraries\Providers\MainServiceProviderFcade::class=>"MainServiceProvider"
+]);
+$app->withEloquent();
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

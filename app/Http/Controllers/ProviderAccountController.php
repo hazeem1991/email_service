@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProviderAccount as ProviderAccountRequest;
+use App\Http\Models\ProviderAccount;
 
-class ProviderAccount extends Controller
+class ProviderAccountController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -22,7 +23,8 @@ class ProviderAccount extends Controller
      */
     public function getIndex(): \Laravel\Lumen\Http\ResponseFactory
     {
-        return response()->json();
+        $provider_accounts = ProviderAccount::orderBy('created_at', "DESC")->get();
+        return response()->json(['code' => '00', 'data' => $provider_accounts], 200, ['Content-Type' => 'application/json']);
     }
 
     /**
@@ -36,10 +38,10 @@ class ProviderAccount extends Controller
 
     /**
      * adding account.
-     * @param Request
+     * @param ProviderAccountRequest
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function postAddAccount(Request $request): \Laravel\Lumen\Http\ResponseFactory
+    public function postAddAccount(ProviderAccountRequest $request): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }
@@ -55,10 +57,10 @@ class ProviderAccount extends Controller
 
     /**
      * Editing Account.
-     * @param ProviderAccount
+     * @param ProviderAccountRequest
      * @return \Laravel\Lumen\Http\ResponseFactory
      */
-    public function postEditAccount(ProviderAccount $request, int $account_id): \Laravel\Lumen\Http\ResponseFactory
+    public function postEditAccount(ProviderAccountRequest $request, int $account_id): \Laravel\Lumen\Http\ResponseFactory
     {
         return response()->json();
     }

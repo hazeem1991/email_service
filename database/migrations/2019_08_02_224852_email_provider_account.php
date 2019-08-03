@@ -23,6 +23,7 @@ class EmailProviderAccount extends Migration
             $table->string('type');
             $table->string('user_name');
             $table->string('password');
+            $table->timestamps();
         });
     }
 

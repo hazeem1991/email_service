@@ -22,11 +22,10 @@ class ProviderAccount extends FormRequest
     public function rules()
     {
         return [
-            'sender'=>'required|email',
-            'recipients'=>'required|array',
-            'recipients.*'=>'email',
-            'type'=>'required',
-            'body'=>'required'
+            'type'=>'required|in:' . implode(',', \MainServiceProvider::getSenders()),
+            'status'=>'required',
+            'user_name'=>'required',
+            'password'=>'required'
         ];
     }
     /**

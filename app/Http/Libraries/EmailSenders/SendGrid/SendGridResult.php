@@ -9,12 +9,14 @@ class SendGridResult implements MailerResult
     private $statusCode;
     private $message;
     private $headers;
+    private $rawResult;
 
     public function __construct(...$args)
     {
         $this->statusCode = (string)$args[0];
         $this->message = (string)$args[1];
         $this->headers = $args[2];
+        $this->rawResult=json_encode(end($args));
     }
 
     public function getMessage(): string
@@ -30,5 +32,9 @@ class SendGridResult implements MailerResult
     public function getStatusCode(): string
     {
         return $this->statusCode;
+    }
+    public function getRaw(): string
+    {
+        return $this->rawResult;
     }
 }

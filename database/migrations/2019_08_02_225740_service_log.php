@@ -19,9 +19,11 @@ class ServiceLog extends Migration
             $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
             $table->bigIncrements('id');
-            $table->string('failed_recipient',500);
-            $table->string('success_recipient',500);
+            $table->string('sender',500);
+            $table->string('recipients',500);
+            $table->string('rawResponse',500);
             $table->string('provider');
+            $table->string('message',500);
             $table->integer('status');
             $table->timestamps();
         });

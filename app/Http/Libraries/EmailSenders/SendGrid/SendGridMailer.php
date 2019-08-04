@@ -13,10 +13,12 @@ class SendGridMailer implements Mailer
 {
     private $sender;
     private $mail;
-    public $result;
+    private $result;
+    public $account;
 
     public function __construct(ProviderAccount $account)
     {
+        $this->account = $account;
         $this->sender = new SendGrid($account->password);
         $this->mail = new Mail();
     }

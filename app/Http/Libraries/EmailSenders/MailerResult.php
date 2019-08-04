@@ -11,5 +11,7 @@ interface MailerResult
 
     public function getMessage(): string;
 
-    public function getHeaders(): array ;
+    public function getHeaders(): array;
+
+    public function getRaw(): string;
 }

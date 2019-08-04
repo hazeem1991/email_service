@@ -1,4 +1,4 @@
 export default {
-    'serverLink': 'localhost',
+    'serverLink': 'http://localhost:8000',
     'client_base':'/'
 }

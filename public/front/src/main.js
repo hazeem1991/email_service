@@ -10,6 +10,17 @@ import '@/style.css';
 import config from '@/config'
 import About from '@/pages/About';
 import Home from '@/pages/Home';
+import Messages from '@/pages/MessageList';
+import axios from 'axios';
+window.$axios = axios.create({
+    headers: {
+        common: {        // can be common or any other method
+            accept: 'application/json'
+        }
+    }
+})
+
+
 
 Vue.use(BootstrapVue);
 Vue.use(Toasted);
@@ -18,7 +29,8 @@ Vue.config.productionTip = false;
 
 const routes = [
     {path: '/', component: Home},
-    {path: '/about', component: About}
+    {path: '/about', component: About},
+    {path: '/messages', component: Messages}
 ];
 
 const router = new VueRouter({

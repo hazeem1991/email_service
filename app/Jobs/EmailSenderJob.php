@@ -58,8 +58,8 @@ class EmailSenderJob extends Job
                 ]);
             }
         }
-        if ($this->message->status != 3) {
-            $this->message->status=4;
+        if ($this->message->status != 2) {
+            $this->message->status=3;
             $this->message->save();
             $this->fail(new \Exception("Email Not Send via all providers", 1));
         }

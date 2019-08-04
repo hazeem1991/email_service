@@ -22,7 +22,7 @@ class EmailProviderAccount extends Migration
             $table->integer('status');
             $table->integer('priority');
             $table->string('type');
-            $table->string('user_name');
+            $table->string('username');
             $table->string('password');
             $table->timestamps();
         });

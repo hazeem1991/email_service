@@ -24,7 +24,7 @@ class ProviderAccount extends FormRequest
         return [
             'type'=>'required|in:' . implode(',', \MainServiceProvider::getSenders()),
             'status'=>'required',
-            'user_name'=>'required',
+            'username'=>'required',
             'password'=>'required',
             'priority'=>"required|unique:email_provider_accounts|numeric"
         ];

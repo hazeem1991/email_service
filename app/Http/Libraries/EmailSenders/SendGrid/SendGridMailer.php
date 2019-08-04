@@ -56,8 +56,8 @@ class SendGridMailer implements Mailer
         foreach ($recipients as $recipient) {
             $this->addRecipient($recipient);
         }
-        $result=$this->sender->client->mail()->send()->post($this->mail);
-        $this->result = new SendGridResult($result->statusCode(),$result->body(),$result->headers());
+        $result = $this->sender->client->mail()->send()->post($this->mail);
+        $this->result = new SendGridResult($result->statusCode(), $result->body(), $result->headers());
         return $this->result;
     }
 }

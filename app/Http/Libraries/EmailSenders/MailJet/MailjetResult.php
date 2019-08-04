@@ -4,7 +4,7 @@ namespace App\Http\Libraries\EmailSenders\SendGrid;
 
 use App\Http\Libraries\EmailSenders\MailerResult;
 
-class SendGridResult implements MailerResult
+class MailjetResult implements MailerResult
 {
     private $statusCode;
     private $message;

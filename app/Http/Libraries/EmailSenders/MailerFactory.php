@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Libraries\MailSenders;
+namespace App\Http\Libraries\EmailSenders;
 
 use App\Http\Models\ProviderAccount;
 
@@ -13,10 +13,10 @@ class MailerFactory
         if (in_array($account->type, $senders_available)) {
             switch ($account->type) {
                 case "Sendgrid";
-                        return new SandGrid($account);
+                        return new SendGridMailer($account);
                     break;
                 case "Mailjet";
-                    return new Mailjet($account);
+                    return new MailjetMailer($account);
                     break;
                 default:
                     throw(new \Exception("Provider Not Available", 1));

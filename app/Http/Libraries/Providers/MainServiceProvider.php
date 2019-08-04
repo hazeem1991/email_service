@@ -8,7 +8,7 @@ use phpDocumentor\Reflection\Types\Self_;
 class MainServiceProvider
 {
     const AVAILABLE_EMAIL_PROVIDER = ['Mailjet', 'Sendgrid'];
-    const MESSAGE_TYPES=["raw_text","html"];
+    const MESSAGE_TYPES=["plain","html"];
     public function __construct()
     {
     }

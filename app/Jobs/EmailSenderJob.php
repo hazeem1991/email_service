@@ -5,7 +5,7 @@ namespace App\Jobs;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Http\Models\Message;
 use App\Http\Models\ProviderAccount;
-use App\Http\Libraries\MailSenders\MailerFactory;
+//use App\Http\Libraries\EmailSenders\MailerFactory;
 class EmailSenderJob extends Job
 {
     use InteractsWithQueue;
@@ -32,8 +32,9 @@ class EmailSenderJob extends Job
         $this->message->save();
         $accounts = ProviderAccount::where("status", "=", 1)->orderBy('priority', "ASC")->get();
         foreach ($accounts as $account) {
-            $mailer=MailerFactory::getMailer($account);
-            dump($mailer);
+            $mailer=\ExMailer::getMailer($account);
+            $response=$mailer->send($this->message);
+            dump($response);
         }
     }
 }

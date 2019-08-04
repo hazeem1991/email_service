@@ -85,7 +85,8 @@ $app->register(App\Providers\FormRequestServiceProvider::class);
 $app->make('queue');
 $app->bound('queue');
 $app->withFacades(true, [
-    App\Http\Libraries\Providers\MainServiceProviderFcade::class=>"MainServiceProvider"
+    App\Http\Libraries\Providers\MainServiceProviderFacade::class=>"MainServiceProvider",
+    App\Http\Libraries\EmailSenders\MailFactoryFacade::class=>"ExMailer"
 ]);
 $app->withEloquent();
 /*

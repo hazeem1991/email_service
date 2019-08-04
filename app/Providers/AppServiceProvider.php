@@ -17,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('MainServiceProvider', function ($app) {
             return new \App\Http\Libraries\Providers\MainServiceProvider();
         });
+        $this->app->singleton('ExMailer', function ($app) {
+            return new \App\Http\Libraries\EmailSenders\MailerFactory();
+        });
     }
     /**
      * Bootstrap services.
@@ -35,7 +38,8 @@ class AppServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'MainServiceProvider'
+            'MainServiceProvider',
+            'ExMailer'
         ];
     }
 }

@@ -15,6 +15,7 @@
                     <th>Recipients</th>
                     <th>Subject</th>
                     <th>Body</th>
+                    <th>Date</th>
                     <th>Status</th>
                 </tr>
                 </thead>
@@ -26,6 +27,7 @@
                     <td>{{message.recipients}}</td>
                     <td>{{message.subject}}</td>
                     <td>{{message.body}}</td>
+                    <td>{{message.created_at}}</td>
                     <td>
                         <div v-if="message.status === '0'">
                             <span class="badge badge-secondary">Added</span>

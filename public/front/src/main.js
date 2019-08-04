@@ -11,6 +11,7 @@ import config from '@/config'
 import About from '@/pages/About';
 import Home from '@/pages/Home';
 import Messages from '@/pages/MessageList';
+import Logs from '@/pages/Log';
 import axios from 'axios';
 window.$axios = axios.create({
     headers: {
@@ -30,7 +31,8 @@ Vue.config.productionTip = false;
 const routes = [
     {path: '/', component: Home},
     {path: '/about', component: About},
-    {path: '/messages', component: Messages}
+    {path: '/messages', component: Messages},
+    {path: '/logs', component: Logs}
 ];
 
 const router = new VueRouter({

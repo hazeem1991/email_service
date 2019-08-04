@@ -2,7 +2,7 @@
     <div id="app">
         <!-- navbar -->
         <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-            <div class="container">
+            <div class="container-fluid">
                 <router-link to="/" class="navbar-brand">Home</router-link>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -15,11 +15,14 @@
                         <li class="nav-item">
                             <router-link class="nav-link" to="/messages">Messages</router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link class="nav-link" to="/logs">Emails Logs</router-link>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container-fluid">
             <transition name="moveInUp">
                 <router-view/>
             </transition>

@@ -38,21 +38,23 @@ class EmailSenderJob extends Job
             if ($result->getStatusCode() == "202" || $result->getStatusCode() == "200") {
                 $this->message->status = 2;
                 $this->message->save();
+                $provider = explode("\\",get_class($mailer));
                 Log::create([
                     'sender'=>$this->message->sender,
                     'recipients'=>$this->message->recipients,
                     'rawResponse'=>$result->getRaw(),
-                    'provider'=>get_class($mailer)."_id:".$mailer->account->id,
+                    'provider'=>end($provider)."_id:".$mailer->account->id,
                     'message'=>json_encode($this->message->toArray()),
                     'status'=>1,
                 ]);
                 break;
             } else {
+                $provider =explode("\\",get_class($mailer));
                 Log::create([
                     'sender'=>$this->message->sender,
                     'recipients'=>$this->message->recipients,
                     'rawResponse'=>$result->getRaw(),
-                    'provider'=>get_class($mailer)."_id:".$mailer->account->id,
+                    'provider'=>end($provider)."_id:".$mailer->account->id,
                     'message'=>json_encode($this->message->toArray()),
                     'status'=>0,
                 ]);

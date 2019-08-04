@@ -10,37 +10,30 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Type</th>
                     <th>Sender</th>
                     <th>Recipients</th>
-                    <th>Subject</th>
-                    <th>Body</th>
+                    <th>RawResponse</th>
+                    <th>Provider</th>
+                    <th>Message</th>
+                    <th>Date</th>
                     <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="message in messages">
-                    <td>{{message.id}}</td>
-                    <td>{{message.type}}</td>
-                    <td>{{message.sender}}</td>
-                    <td>{{message.recipients}}</td>
-                    <td>{{message.subject}}</td>
-                    <td>{{message.body}}</td>
+                <tr v-for="log in logs">
+                    <td>{{log.id}}</td>
+                    <td>{{log.sender}}</td>
+                    <td>{{log.recipients}}</td>
+                    <td> <b-button v-b-tooltip.hover :title=log.rawResponse >View Response</b-button></td>
+                    <td>{{log.provider}}</td>
+                    <td><b-button v-b-tooltip.hover :title=log.message >View Message</b-button></td>
+                    <td>{{log.created_at}}</td>
                     <td>
-                        <div v-if="message.status === '0'">
-                            <span class="badge badge-secondary">Added</span>
+                        <div v-if="log.status === 0">
+                            <span class="badge badge-danger">Not Sent</span>
                         </div>
-                        <div v-else-if="message.status === '1'">
-                            <span class="badge badge-warning">In Queue</span>
-                        </div>
-                        <div v-else-if="message.status === '2'">
+                        <div v-else-if="log.status === 1">
                             <span class="badge badge-success">Sent</span>
-                        </div>
-                        <div v-else-if="message.status === '3'">
-                            <span class="badge badge-danger">Not Sent</span>
-                        </div>
-                        <div v-else>
-                            <span class="badge badge-danger">Not Sent</span>
                         </div>
                     </td>
                 </tr>
@@ -58,9 +51,9 @@
 
         name: 'message_list',
         created() {
-            $axios.get(`${Config['serverLink']}/logs/`)
+            $axios.get(`${Config['serverLink']}/log/`)
                 .then((response) => {
-                    this.messages=response.data.data;
+                    this.logs=response.data.data;
                 }, (error) => {
                     this.$toasted.global.my_app_error({
                         message: error.response.data.message
@@ -68,7 +61,7 @@
                 })
         },
         data() {
-            return {messages: []}
+            return {logs: []}
         }
     }
 </script>

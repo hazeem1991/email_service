@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Libraries\EmailSenders;
+namespace App\Http\Libraries\EmailSenders\MailJet;
 
 use App\Http\Models\Message;
 use App\Http\Models\ProviderAccount;
+use App\Http\Libraries\EmailSenders\Mailer;
+use App\Http\Libraries\EmailSenders\MailerResult;
 
 class MailjetMailer implements Mailer
 {
@@ -11,6 +13,7 @@ class MailjetMailer implements Mailer
     {
 
     }
+
     public function setBody(string $type, string $body): Mailer
     {
 
@@ -31,7 +34,7 @@ class MailjetMailer implements Mailer
 
     }
 
-    public function send(Message $message)
+    public function send(Message $message): MailerResult
     {
 
     }

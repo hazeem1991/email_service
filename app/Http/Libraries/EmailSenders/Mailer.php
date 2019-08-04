@@ -17,5 +17,5 @@ interface Mailer
 
     public function setSubject(string $subject): Mailer;
 
-    public function send(Message $message);
+    public function send(Message $message): MailerResult;
 }

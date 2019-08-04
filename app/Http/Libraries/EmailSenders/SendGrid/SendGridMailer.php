@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Libraries\EmailSenders;
+namespace App\Http\Libraries\EmailSenders\SendGrid;
 
 use App\Http\Models\Message;
 use App\Http\Models\ProviderAccount;
+use App\Http\Libraries\EmailSenders\Mailer;
+use App\Http\Libraries\EmailSenders\MailerResult;
 use SendGrid\Mail\Mail;
 use SendGrid;
 
@@ -11,6 +13,7 @@ class SendGridMailer implements Mailer
 {
     private $sender;
     private $mail;
+    public $result;
 
     public function __construct(ProviderAccount $account)
     {
@@ -44,7 +47,7 @@ class SendGridMailer implements Mailer
         return $this;
     }
 
-    public function send(Message $message)
+    public function send(Message $message): MailerResult
     {
         $this->setSender($message->sender)
             ->setSubject($message->subject)
@@ -53,7 +56,8 @@ class SendGridMailer implements Mailer
         foreach ($recipients as $recipient) {
             $this->addRecipient($recipient);
         }
-        $response = $this->sender->client->mail()->send()->post($this->mail);
-        return $response;
+        $result=$this->sender->client->mail()->send()->post($this->mail);
+        $this->result = new SendGridResult($result->statusCode(),$result->body(),$result->headers());
+        return $this->result;
     }
 }

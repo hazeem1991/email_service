@@ -1,5 +1,4 @@
 <template>
-    <main-layout>
         <div class="card mt-3">
             <div class="card-body">
                 <div class="card-title">
@@ -11,14 +10,11 @@
                 Have Fun
             </div>
         </div>
-    </main-layout>
 </template>
 
 <script>
-    import MainLayout from '../layouts/Main.vue'
+
     export default {
-        components: {
-            MainLayout
-        }
+        name:'home',
     }
 </script>

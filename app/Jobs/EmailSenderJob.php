@@ -35,7 +35,6 @@ class EmailSenderJob extends Job
         foreach ($accounts as $account) {
             $mailer = \ExMailer::getMailer($account);
             $result = $mailer->send($this->message);
-            dump($result);
             if ($result->getStatusCode() == "202" || $result->getStatusCode() == "200") {
                 $this->message->status = 2;
                 $this->message->save();

@@ -3,3 +3,5 @@
 Homestead.json
 Homestead.yaml
 .env
+/public/front_raw/node_modules
+/public/front_raw/package-lock.json

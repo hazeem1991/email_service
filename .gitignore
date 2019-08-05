@@ -2,7 +2,6 @@
 /.idea
 Homestead.json
 Homestead.yaml
-.env
 /test
 /public/front_raw/node_modules
 /public/front_raw/package-lock.json

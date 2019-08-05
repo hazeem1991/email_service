@@ -6,6 +6,7 @@
             </div>
         </div>
         <div class="card-body">
+            <router-link class="btn btn-primary" style="margin-bottom: 10px" to="/new-message">Add New Message</router-link>
             <table class="table">
                 <thead>
                 <tr>
@@ -20,7 +21,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="message in messages">
+                <tr v-for="message in messages" v-bind:key="message.id">
                     <td>{{message.id}}</td>
                     <td>{{message.type}}</td>
                     <td>{{message.sender}}</td>
@@ -53,7 +54,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    /* eslint-disable */
     import Config from '../config.js';
 
     export default {

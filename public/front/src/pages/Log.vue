@@ -2,7 +2,7 @@
     <div class="card mt-3">
         <div class="card-body">
             <div class="card-title">
-                List Of Messages
+                List Of Logs
             </div>
         </div>
         <div class="card-body">
@@ -20,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="log in logs">
+                <tr v-for="log in logs" v-bind:key="log.id">
                     <td>{{log.id}}</td>
                     <td>{{log.sender}}</td>
                     <td>{{log.recipients}}</td>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+    /* eslint-disable */
     import Config from '../config.js';
 
     export default {

@@ -11,15 +11,19 @@ import config from '@/config'
 import About from '@/pages/About';
 import Home from '@/pages/Home';
 import Messages from '@/pages/MessageList';
+import NewMessages from '@/pages/NewMessage';
 import Logs from '@/pages/Log';
 import axios from 'axios';
+import CKEditor from '@ckeditor/ckeditor5-vue';
+
+Vue.use( CKEditor );
 window.$axios = axios.create({
     headers: {
         common: {        // can be common or any other method
             accept: 'application/json'
         }
     }
-})
+});
 
 
 
@@ -32,6 +36,7 @@ const routes = [
     {path: '/', component: Home},
     {path: '/about', component: About},
     {path: '/messages', component: Messages},
+    {path: '/new-message', component: NewMessages},
     {path: '/logs', component: Logs}
 ];
 

@@ -17,3 +17,23 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->email,
     ];
 });
+$factory->define(App\Http\Models\Message::class, function ($faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->email,
+    ];
+});
+$factory->define(App\Http\Models\ProviderAccount::class, function ($faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->email,
+    ];
+});
+
+$factory->define(App\Http\Models\Log::class, function ($faker) {
+    return [
+        'name' => $faker->name,
+        'email' => $faker->email,
+    ];
+});
+

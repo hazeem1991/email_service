@@ -11,9 +11,10 @@ git clone https://github.com/hazeem1991/emai_service.git
 ```
 after Cloning move to this folder ``./emaildock``and run this command 
 ```
-docker-compose up --build -d mysql workspace php-fpm nginx
+docker-compose up --build  --remove-orphan -d mysql workspace php-fpm nginx 
 ```
-and then run the bash.sh file  
+and then run the ``bash.sh`` file  
+if windows run the ``bat.bat`` file
 #### API endpoints
 * add provider account `email_provider/add`
 * edit provider account `email_provider/edit/1`
@@ -21,7 +22,9 @@ and then run the bash.sh file
 * list the email log `logs/`
 * list the sent messages `messages/`
 * list the sent messages `messages/add`  
-more will be on the api.json file that describe the api  
+more info about api
+[API Docs](https://documenter.getpostman.com/view/1337753/SVYqPyv7?version=latest#82a18b8d-804b-4356-b0c7-5f59e6246506
+)
 #### Front-end App
 http://localhost or  the ip that the machine bind  with  
 will serve the vue js app to view logs , list messages and add new messages
@@ -48,7 +51,13 @@ artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'
   #### More Info
   for more information please contact me at my email hazeem.arian@gmail.com  
   or [Hazem Arian](https://www.linkedin.com/in/hazem-arian-467b4183/) - Linkedin Profile
-  
-  
-  
+
+
+
+
+PS for testing  
+SendGrid username =  ``CgkjFBi7R9acktk4zL8o_w``  
+SendGrid password = ``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``  
+Mailjet username = ``c81c6895229b0c73b6080d6aaa27783e``  
+Mailjet password = ``87beb4e836be75baa066bca4ea31440a``
  

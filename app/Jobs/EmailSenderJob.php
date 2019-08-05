@@ -63,6 +63,14 @@ class EmailSenderJob extends Job
         if ($this->message->status != 2) {
             $this->message->status=3;
             $this->message->save();
+            Log::create([
+                'sender'=>$this->message->sender,
+                'recipients'=>$this->message->recipients,
+                'rawResponse'=>"",
+                'provider'=>"",
+                'message'=>json_encode($this->message->toArray()),
+                'status'=>0,
+            ]);
             $this->fail(new \Exception("Email Not Send via all providers", 1));
         }
     }

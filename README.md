@@ -45,7 +45,7 @@ artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'
  to add a new type off providers you just add it to the `.env` file   
   in this key MAIL_PROVIDERS secreted by `,` comma  
   and in this folder `App\Http\Libraries\EmailSenders` create a folder for the new sender 
-  and implement the `Miler` and `MailerResult` interfaces  
+  and implement the `Mailer` and `MailerResult` interfaces  
   add the new provider to the factory `MailerFactory`  
   and now the new factory will work 
   #### More Info

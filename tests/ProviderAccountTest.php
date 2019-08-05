@@ -35,7 +35,7 @@ class ProviderAccountTest extends TestCase
                 'type'=>"Sendgrid",
                 'username'=>'test',
                 'password'=>'test',
-                'priority'=>'1',
+                'priority'=>rand(0,20),
                 'status'=>1
             ], ['accept' => 'application/json']);
         $this->assertEquals(200, $this->response->status());
@@ -46,25 +46,37 @@ class ProviderAccountTest extends TestCase
     public function testEditProviderAccount()
     {
         $response = $this->get('/provider_account/edit', ['accept' => 'application/json']);
-
         $this->assertEquals(404, $this->response->status());
+
         $response = $this->get('/provider_account/edit/1', ['accept' => 'application/json']);
 
         $this->assertEquals(200, $this->response->status());
         $response->seeJson([
             'code' => '00',
         ]);
-        $response = $this->put('/provider_account/edit/1',['test'=>"422 error"], ['accept' => 'application/json']);
 
+        $response = $this->put('/provider_account/edit/1',['test'=>"422 error"], ['accept' => 'application/json']);
         $this->assertEquals(422, $this->response->status());
         $response = $this->put('/provider_account/edit/1',
             [
                 'type'=>"Sendgrid",
                 'username'=>'test',
                 'password'=>'test',
-                'priority'=>'1',
-                'status'=>'1'
+                'priority'=>rand(0,20),
+                'status'=>1
             ], ['accept' => 'application/json']);
+        $this->assertEquals(200, $this->response->status());
+        $response->seeJson([
+            'code' => '00',
+        ]);
+    }
+    public function testDeleteProviderAccount()
+    {
+        $response = $this->get('/provider_account/delete', ['accept' => 'application/json']);
+        $this->assertEquals(404, $this->response->status());
+
+        $response = $this->delete('/provider_account/delete/1', ['accept' => 'application/json']);
+
         $this->assertEquals(200, $this->response->status());
         $response->seeJson([
             'code' => '00',

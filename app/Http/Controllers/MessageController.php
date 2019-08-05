@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Message as MessageRequest;
-use App\Http\Models\Message;
 use App\Jobs\EmailSenderJob;
+use App\Http\Repositories\Messages\MessagesRepositoryInterface as Messages;
 
 class MessageController extends Controller
 {
+    protected $messages;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Messages $messages)
     {
-        //
+        $this->messages=$messages;
     }
 
     /**
@@ -25,7 +26,7 @@ class MessageController extends Controller
      */
     public function getIndex(): \Illuminate\Http\JsonResponse
     {
-        $messages = Message::orderBy('created_at', "DESC")->get();
+        $messages = $this->messages->getAllMessages();
         return response()->json(['code' => '00', 'data' => $messages], 200, ['Content-Type' => 'application/json']);
     }
 
@@ -48,9 +49,7 @@ class MessageController extends Controller
     public function postAddMessageForm(MessageRequest $request): \Illuminate\Http\JsonResponse
     {
         $data=$request->validated();
-        $data['recipients']=implode(",",$data['recipients']);
-        $data=$data+['status'=>0];
-        $message=Message::create($data);
+        $message= $this->messages->AddNewMessage($data);
         dispatch(new EmailSenderJob($message));
         return response()->json(['code' => '00', 'msg' => "added_successfully"], 200, ['Content-Type' => 'application/json']);
     }

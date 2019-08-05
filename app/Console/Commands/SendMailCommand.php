@@ -7,15 +7,16 @@ use App\Http\Models\Message;
 
 use Exception;
 use Illuminate\Console\Command;
+use App\Jobs\EmailSenderJob;
 
-class DeletePostsCommand extends Command
+class SendMailCommand extends Command
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $signature = "send:mail";
+    protected $signature = "sendmail {sender} {recipient} {subject} {body}";
 
     /**
      * The console command description.
@@ -33,13 +34,16 @@ class DeletePostsCommand extends Command
     public function handle()
     {
         try {
-            $data=$request->validated();
-            $data['recipients']=implode(",",$data['recipients']);
-            $data=$data+['status'=>0];
-            $message=Message::create($data);
+            $data['sender'] = $this->argument('sender');
+            $data['subject'] = $this->argument('subject');
+            $data['body'] = $this->argument('body');
+            $data['recipients'] = $this->argument('recipient');
+            $data = $data + ['type' => 'plain'];
+            $data = $data + ['status' => 0];
+            $message = Message::create($data);
             dispatch(new EmailSenderJob($message));
         } catch (Exception $e) {
-            $this->error("An error occurred");
+            $this->error( $e->getMessage());
         }
     }
 }

@@ -43,15 +43,15 @@ artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'
  ## Is it Extendable  ?
  it is so easy to extend because the code for sending is following the solid principle  
  to add a new type off providers you just add it to the `.env` file   
-  in this key MAIL_PROVIDERS secreted by `,` comma  
-  and in this folder `App\Http\Libraries\EmailSenders` create a folder for the new sender 
-  and implement the `Mailer` and `MailerResult` interfaces  
-  add the new provider to the factory `MailerFactory`  
-  and now the new factory will work 
-  #### More Info
-  for more information please contact me at my email hazeem.arian@gmail.com  
-  or [Hazem Arian](https://www.linkedin.com/in/hazem-arian-467b4183/) - Linkedin Profile
-
+ in this key MAIL_PROVIDERS secreted by `,` comma  
+ and in this folder `App\Http\Libraries\EmailSenders` create a folder for the new sender  
+ and implement the `Mailer` and `MailerResult` interfaces  
+ add the new provider to the factory `MailerFactory`  
+ and now the new factory will work 
+ #### More Info
+ for more information please contact me at my email hazeem.arian@gmail.com  
+ or [Hazem Arian](https://www.linkedin.com/in/hazem-arian-467b4183/) - Linkedin Profile
+    
 
 
 

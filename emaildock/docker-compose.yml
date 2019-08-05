@@ -22,19 +22,15 @@ services:
         - INSTALL_SUBVERSION=${WORKSPACE_INSTALL_SUBVERSION}
         - INSTALL_XDEBUG=${WORKSPACE_INSTALL_XDEBUG}
         - INSTALL_NODE=${WORKSPACE_INSTALL_NODE}
-        - NPM_REGISTRY=${WORKSPACE_NPM_REGISTRY}
         - INSTALL_NPM_VUE_CLI=${WORKSPACE_INSTALL_NPM_VUE_CLI}
         - PUID=${WORKSPACE_PUID}
         - PGID=${WORKSPACE_PGID}
         - NODE_VERSION=${WORKSPACE_NODE_VERSION}
-        - YARN_VERSION=${WORKSPACE_YARN_VERSION}
         - TZ=${WORKSPACE_TIMEZONE}
     volumes:
       - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
     extra_hosts:
       - "dockerhost:${DOCKER_HOST_IP}"
-    ports:
-      - "${WORKSPACE_SSH_PORT}:22"
     tty: true
     environment:
       - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
@@ -66,7 +62,7 @@ services:
       - workspace
     networks:
       - backend
-
+    container_name: EmailService_PHPFPM
   ### NGINX Server #########################################
   nginx:
     build:
@@ -88,6 +84,7 @@ services:
     networks:
       - frontend
       - backend
+    container_name: EmailService_NGINX
   ### MySQL ################################################
   mysql:
     build:
@@ -102,7 +99,6 @@ services:
       - TZ=${WORKSPACE_TIMEZONE}
     volumes:
       - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
-      - mysql:/var/lib/mysql
       - ${MYSQL_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
     ports:
       - "${MYSQL_PORT}:3306"

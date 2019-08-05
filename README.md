@@ -57,5 +57,5 @@ artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'
 
 PS for testing  
 SendGrid 
-Mailjet password
+Mailjet 
  

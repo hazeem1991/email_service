@@ -12,7 +12,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return redirect('front/dist');
 });
 $router->group(['prefix' => 'messages'], function () use ($router) {
     $router->get('/','MessageController@getIndex');

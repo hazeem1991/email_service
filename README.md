@@ -56,8 +56,6 @@ artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'
 
 
 PS for testing  
-SendGrid username =  ``CgkjFBi7R9acktk4zL8o_w``  
-SendGrid password = ``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``  
-Mailjet username = ``c81c6895229b0c73b6080d6aaa27783e``  
-Mailjet password = ``87beb4e836be75baa066bca4ea31440a``
+SendGrid 
+Mailjet password
  

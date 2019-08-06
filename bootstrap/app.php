@@ -1,10 +1,19 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
+$command = implode(" ", $_SERVER['argv']);
+if (strpos($command, "--env") !== false) {
+    $env = explode("=", $command)[1];
+    (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
+        dirname(__DIR__),
+        '.env.' . $env
+    ))->bootstrap();
+} else {
+    (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
+        dirname(__DIR__)
+    ))->bootstrap();
+}
 
-(new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
-    dirname(__DIR__)
-))->bootstrap();
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +88,6 @@ $app->middleware([
 | totally optional, so you are not required to uncomment this line.
 |
 */
-
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\FormRequestServiceProvider::class);
 $app->register(Barryvdh\Cors\ServiceProvider::class);
@@ -89,8 +97,8 @@ $app->register(\App\Http\Repositories\RepositoriesProvider::class);
 $app->make('queue');
 $app->bound('queue');
 $app->withFacades(true, [
-    App\Http\Libraries\Providers\MainServiceProviderFacade::class=>"MainServiceProvider",
-    App\Http\Libraries\EmailSenders\MailFactoryFacade::class=>"ExMailer"
+    App\Http\Libraries\Providers\MainServiceProviderFacade::class => "MainServiceProvider",
+    App\Http\Libraries\EmailSenders\MailFactoryFacade::class => "ExMailer"
 ]);
 $app->withEloquent();
 /*
@@ -107,7 +115,7 @@ $app->withEloquent();
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
-    require __DIR__.'/../routes/web.php';
+    require __DIR__ . '/../routes/web.php';
 });
 
 return $app;

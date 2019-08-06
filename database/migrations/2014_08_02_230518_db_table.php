@@ -20,6 +20,7 @@ class DbTable extends Migration
         config(["database.connections.mysql.database" => null]);
 
         $query = "CREATE DATABASE IF NOT EXISTS $schemaName CHARACTER SET $charset COLLATE $collation;";
-        \DB::statement($query);
+//        \DB::raw($query);
+        config(["database.connections.mysql.database" => $schemaName]);
     }
 }

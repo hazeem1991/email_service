@@ -11,7 +11,7 @@ git clone https://github.com/hazeem1991/emai_service.git
 ```
 after Cloning move to this folder ``./emaildock``and run this command 
 ```
-docker-compose up --build  --remove-orphan -d mysql workspace php-fpm nginx 
+docker-compose up --force-recreate   --remove-orphan -d mysql workspace php-fpm nginx 
 ```
 and then run the ``bash.sh`` file  
 if windows run the ``bat.bat`` file

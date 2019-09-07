@@ -1,5 +1,6 @@
 docker  exec -w /var/www/ EmailService_Core composer install
 docker  exec -w /var/www/ EmailService_Core php artisan migrate
+docker  exec -w /var/www/ EmailService_Core php artisan migrate --env=testing
 docker  exec -w /var/www/ EmailService_Core php artisan cache:clear
 docker  exec -w /var/www/ EmailService_Core php artisan queue:restart
 docker  exec -w /var/www/ EmailService_Core service supervisor start

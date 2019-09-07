@@ -7,7 +7,7 @@ you can add as you want but you should add the source code How ? let me tell you
 ### Installing
 to install this microservice system need to have only docker docker-compose 
 ```$xslt
-git clone https://github.com/hazeem1991/emai_service.git
+git clone https://github.com/hazeem1991/email_service.git
 ```
 after Cloning move to this folder ``./emaildock``and run this command 
 ```
@@ -16,9 +16,9 @@ docker-compose up --force-recreate   --remove-orphan -d mysql workspace php-fpm 
 and then run the ``bash.sh`` file  
 if windows run the ``bat.bat`` file
 #### API endpoints
-* add provider account `email_provider/add`
-* edit provider account `email_provider/edit/1`
-* list provider accounts `email_provider/`
+* add provider account `provider_account/add`
+* edit provider account `provider_account/edit/1`
+* list provider accounts `provider_account/`
 * list the email log `logs/`
 * list the sent messages `messages/`
 * list the sent messages `messages/add`  

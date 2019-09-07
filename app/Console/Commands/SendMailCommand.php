@@ -34,16 +34,16 @@ class SendMailCommand extends Command
     public function handle()
     {
         try {
-            $data['sender'] = $this->argument('sender');
-            $data['subject'] = $this->argument('subject');
-            $data['body'] = $this->argument('body');
-            $data['recipients'] = $this->argument('recipient');
-            $data = $data + ['type' => 'plain'];
-            $data = $data + ['status' => 0];
+            $data["sender"] = $this->argument("sender");
+            $data["subject"] = $this->argument("subject");
+            $data["body"] = $this->argument("body");
+            $data["recipients"] = $this->argument("recipient");
+            $data = $data + ["type" => "plain"];
+            $data = $data + ["status" => 0];
             $message = Message::create($data);
             dispatch(new EmailSenderJob($message));
         } catch (Exception $e) {
-            $this->error( $e->getMessage());
+            $this->error($e->getMessage());
         }
     }
 }

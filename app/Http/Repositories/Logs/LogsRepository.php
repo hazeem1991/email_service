@@ -10,6 +10,6 @@ class LogsRepository implements LogsRepositoryInterface
 
     public function getLogList(): Collection
     {
-        return Log::orderBy('created_at', "DESC")->get();
+        return Log::orderBy("created_at", "DESC")->get();
     }
 }

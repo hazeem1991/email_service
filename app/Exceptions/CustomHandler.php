@@ -11,6 +11,7 @@ class CustomHandler extends Handler
     {
         parent::report($exception);
     }
+
     private function title($class)
     {
         $parts = explode('\\', $class);
@@ -73,9 +74,9 @@ class CustomHandler extends Handler
 
     public function render($request, \Exception $exception)
     {
-        if($request->header("accept")=="application/json")
+        if ($request->header("accept") == "application/json")
             return $this->renderJSON($request, $exception);
         else
-            return parent::render($request,$exception);
+            return parent::render($request, $exception);
     }
 }

@@ -31,7 +31,7 @@ class EmailSenderJob extends Job
     {
         $this->message->status = 1;
         $this->message->save();
-        $accounts = ProviderAccount::where("status", "=", 1)->orderBy('priority', "ASC")->get();
+        $accounts = ProviderAccount::where("status", "=", 1)->orderBy("priority", "ASC")->get();
         foreach ($accounts as $account) {
             $mailer = \ExMailer::getMailer($account);
             $result = $mailer->send($this->message);
@@ -40,23 +40,23 @@ class EmailSenderJob extends Job
                 $this->message->save();
                 $provider = explode("\\",get_class($mailer));
                 Log::create([
-                    'sender'=>$this->message->sender,
-                    'recipients'=>$this->message->recipients,
-                    'rawResponse'=>$result->getRaw(),
-                    'provider'=>end($provider)."_id:".$mailer->account->id,
-                    'message'=>json_encode($this->message->toArray()),
-                    'status'=>1,
+                    "sender"=>$this->message->sender,
+                    "recipients"=>$this->message->recipients,
+                    "rawResponse"=>$result->getRaw(),
+                    "provider"=>end($provider)."_id:".$mailer->account->id,
+                    "message"=>json_encode($this->message->toArray()),
+                    "status"=>1,
                 ]);
                 break;
             } else {
                 $provider =explode("\\",get_class($mailer));
                 Log::create([
-                    'sender'=>$this->message->sender,
-                    'recipients'=>$this->message->recipients,
-                    'rawResponse'=>$result->getRaw(),
-                    'provider'=>end($provider)."_id:".$mailer->account->id,
-                    'message'=>json_encode($this->message->toArray()),
-                    'status'=>0,
+                    "sender"=>$this->message->sender,
+                    "recipients"=>$this->message->recipients,
+                    "rawResponse"=>$result->getRaw(),
+                    "provider"=>end($provider)."_id:".$mailer->account->id,
+                    "message"=>json_encode($this->message->toArray()),
+                    "status"=>0,
                 ]);
             }
         }
@@ -64,12 +64,12 @@ class EmailSenderJob extends Job
             $this->message->status=3;
             $this->message->save();
             Log::create([
-                'sender'=>$this->message->sender,
-                'recipients'=>$this->message->recipients,
-                'rawResponse'=>"",
-                'provider'=>"",
-                'message'=>json_encode($this->message->toArray()),
-                'status'=>0,
+                "sender"=>$this->message->sender,
+                "recipients"=>$this->message->recipients,
+                "rawResponse"=>"",
+                "provider"=>"",
+                "message"=>json_encode($this->message->toArray()),
+                "status"=>0,
             ]);
             $this->fail(new \Exception("Email Not Send via all providers", 1));
         }

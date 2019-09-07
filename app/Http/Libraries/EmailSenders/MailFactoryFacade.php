@@ -8,6 +8,6 @@ class MailFactoryFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return app('ExMailer');
+        return app("ExMailer");
     }
 }

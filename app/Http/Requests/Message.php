@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Requests;
 /**
  * Class Message.
@@ -14,6 +15,7 @@ class Message extends FormRequest
     {
         return true;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,14 +24,15 @@ class Message extends FormRequest
     public function rules()
     {
         return [
-            'sender'=>'required|email',
-            'recipients'=>'required|array',
-            'recipients.*'=>'email',
-            'subject'=>'required',
-            'type'=>'required|in:' . implode(',', \MainServiceProvider::getMessageTypes()),
-            'body'=>'required'
+            "sender" => "required|email",
+            "recipients" => "required|array",
+            "recipients.*" => "email",
+            "subject" => "required",
+            "type" => "required|in:" . implode(",", \MainServiceProvider::getMessageTypes()),
+            "body" => "required"
         ];
     }
+
     /**
      * Get custom messages for validator errors.
      *

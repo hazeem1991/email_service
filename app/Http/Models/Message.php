@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     protected $table = "messages";
-    protected $fillable = ['type', 'body', 'recipients', 'subject', 'sender', 'status'];
+    protected $fillable = ["type", "body", "recipients", "subject", "sender", "status"];
 }

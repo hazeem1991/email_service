@@ -26,6 +26,6 @@ class LogController extends Controller
     public function getIndex(): \Illuminate\Http\JsonResponse
     {
         $log = $this->logs->getLogList();
-        return response()->json(['code' => '00', 'data' => $log], 200, ['Content-Type' => 'application/json']);
+        return response()->json(["code" => "00", "data" => $log], 200, ["Content-Type" => "application/json"]);
     }
 }

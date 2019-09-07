@@ -8,6 +8,6 @@ class MainServiceProviderFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return app('MainServiceProvider');
+        return app("MainServiceProvider");
     }
 }

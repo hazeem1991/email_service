@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Requests;
 /**
  * Class ProviderAccount.
@@ -14,6 +15,7 @@ class ProviderAccount extends FormRequest
     {
         return true;
     }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,13 +24,14 @@ class ProviderAccount extends FormRequest
     public function rules()
     {
         return [
-            'type'=>'required|in:' . implode(',', \MainServiceProvider::getSenders()),
-            'status'=>'required',
-            'username'=>'required',
-            'password'=>'required',
-            'priority'=>"required|unique:email_provider_accounts|numeric"
+            "type" => "required|in:" . implode(",", \MainServiceProvider::getSenders()),
+            "status" => "required",
+            "username" => "required",
+            "password" => "required",
+            "priority" => "required|unique:email_provider_accounts|numeric"
         ];
     }
+
     /**
      * Get custom messages for validator errors.
      *

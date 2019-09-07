@@ -5,6 +5,7 @@ namespace App\Http\Libraries\EmailSenders;
 use App\Http\Models\ProviderAccount;
 use App\Http\Libraries\EmailSenders\SendGrid\SendGridMailer;
 use App\Http\Libraries\EmailSenders\MailJet\MailjetMailer;
+
 class MailerFactory
 {
 
@@ -14,7 +15,7 @@ class MailerFactory
         if (in_array($account->type, $senders_available)) {
             switch ($account->type) {
                 case "Sendgrid";
-                        return new SendGridMailer($account);
+                    return new SendGridMailer($account);
                     break;
                 case "Mailjet";
                     return new MailjetMailer($account);

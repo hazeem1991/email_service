@@ -17,7 +17,7 @@ class MainServiceProvider
      */
     public function getSenders(): array
     {
-        return explode(",", env('MAIL_PROVIDERS'));
+        return explode(",", env("MAIL_PROVIDERS"));
     }
 
     public function getMessageTypes(): array

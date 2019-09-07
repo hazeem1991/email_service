@@ -14,7 +14,7 @@ class ProviderAccountsRepository implements ProviderAccountsRepositoryInterface
 
     public function getAllAccounts(): Collection
     {
-        return ProviderAccount::orderBy('created_at', "DESC")->get();
+        return ProviderAccount::orderBy("created_at", "DESC")->get();
     }
 
     public function getAccountById(int $id): ProviderAccount

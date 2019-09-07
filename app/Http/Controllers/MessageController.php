@@ -3,21 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Message as MessageRequest;
-use App\Jobs\EmailSenderJob;
 use App\Http\Repositories\Messages\MessagesRepositoryInterface as Messages;
-
+use App\Http\Services\SendEmailService;
 class MessageController extends Controller
 {
     protected $messages;
+    protected $send_service;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Messages $messages)
+    public function __construct(Messages $messages,SendEmailService $send_service)
     {
-        $this->messages = $messages;
+        $this->messages = $messages;;
+        $this->send_service=$send_service;
     }
 
     /**
@@ -50,8 +51,7 @@ class MessageController extends Controller
     public function postAddMessageForm(MessageRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
-        $message = $this->messages->AddNewMessage($data);
-        dispatch(new EmailSenderJob($message));
+        $this->send_service->SendEmail($data);
         return response()->json(["code" => "00", "msg" => "added_successfully"], 200, ["Content-Type" => "application/json"]);
     }
 

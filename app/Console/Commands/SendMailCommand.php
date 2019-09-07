@@ -8,9 +8,16 @@ use App\Http\Models\Message;
 use Exception;
 use Illuminate\Console\Command;
 use App\Jobs\EmailSenderJob;
-
+use App\Http\Services\SendEmailService;
 class SendMailCommand extends Command
 {
+    protected $send_service;
+    public function __construct(SendEmailService $send_service)
+    {
+        $this->send_service=$send_service;
+        parent::__construct();
+    }
+
     /**
      * The console command name.
      *
@@ -37,11 +44,10 @@ class SendMailCommand extends Command
             $data["sender"] = $this->argument("sender");
             $data["subject"] = $this->argument("subject");
             $data["body"] = $this->argument("body");
-            $data["recipients"] = $this->argument("recipient");
+            $data["recipients"] = explode(",",$this->argument("recipient"));
             $data = $data + ["type" => "plain"];
             $data = $data + ["status" => 0];
-            $message = Message::create($data);
-            dispatch(new EmailSenderJob($message));
+            $this->send_service->SendEmail($data);
         } catch (Exception $e) {
             $this->error($e->getMessage());
         }

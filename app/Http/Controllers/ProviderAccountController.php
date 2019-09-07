@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProviderAccount as ProviderAccountRequest;
 use App\Http\Repositories\ProviderAccounts\ProviderAccountsRepositoryInterface as ProviderAccounts;
+use \Illuminate\Http\JsonResponse;
 
 class ProviderAccountController extends Controller
 {
@@ -21,9 +22,9 @@ class ProviderAccountController extends Controller
 
     /**
      * list of added accounts .
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function getIndex(): \Illuminate\Http\JsonResponse
+    public function getIndex(): JsonResponse
     {
         $provider_accounts = $this->provider_account->getAllAccounts();
         return response()->json(["code" => "00", "data" => $provider_accounts], 200, ["Content-Type" => "application/json"]);
@@ -31,9 +32,9 @@ class ProviderAccountController extends Controller
 
     /**
      * Info for adding account.
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function getAddAccount(): \Illuminate\Http\JsonResponse
+    public function getAddAccount(): JsonResponse
     {
         $email_providers = \MainServiceProvider::getSenders();
         return response()->json(["code" => "00", "data" => ["email_providers" => $email_providers]], 200, ["Content-Type" => "application/json"]);
@@ -42,9 +43,9 @@ class ProviderAccountController extends Controller
     /**
      * adding account.
      * @param ProviderAccountRequest
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function postAddAccount(ProviderAccountRequest $request): \Illuminate\Http\JsonResponse
+    public function postAddAccount(ProviderAccountRequest $request): JsonResponse
     {
         $data = $request->validated();
         $provider = $this->provider_account->addNewAccount($data);
@@ -55,9 +56,9 @@ class ProviderAccountController extends Controller
     /**
      * Get the Account to edit.
      * @param int $account_id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function getEditAccount(int $account_id): \Illuminate\Http\JsonResponse
+    public function getEditAccount(int $account_id): JsonResponse
     {
         $provider = $this->provider_account->getAccountById($account_id);
         return response()->json(["code" => "00", "data" => ["provider" => $provider]], 200, ["Content-Type" => "application/json"]);
@@ -67,9 +68,9 @@ class ProviderAccountController extends Controller
      * Editing Account.
      * @param ProviderAccountRequest
      * @param int $account_id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function postEditAccount(ProviderAccountRequest $request, int $account_id): \Illuminate\Http\JsonResponse
+    public function postEditAccount(ProviderAccountRequest $request, int $account_id): JsonResponse
     {
         $data = $request->validated();
         $provider = $this->provider_account->updateAccount($account_id, $data);
@@ -79,9 +80,9 @@ class ProviderAccountController extends Controller
     /**
      * Delete Account.
      * @param int $account_id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function deleteDeleteAccount(int $account_id): \Illuminate\Http\JsonResponse
+    public function deleteDeleteAccount(int $account_id): JsonResponse
     {
         $provider = $this->provider_account->deleteAccount($account_id);
         return response()->json(["code" => "00", "msg" => "delete_successfully"], 200, ["Content-Type" => "application/json"]);

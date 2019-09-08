@@ -5,6 +5,8 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class LogsTest extends TestCase
 {
+    use DatabaseMigrations, DatabaseTransactions;
+
     /**
      * A basic test example.
      *

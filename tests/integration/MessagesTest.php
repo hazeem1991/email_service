@@ -5,6 +5,8 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class MessagesTest extends TestCase
 {
+    use DatabaseMigrations, DatabaseTransactions;
+
     /**
      * A basic test example.
      *
@@ -19,6 +21,7 @@ class MessagesTest extends TestCase
             'code' => '00',
         ]);
     }
+
     public function testAddMessages()
     {
         $response = $this->get('/messages/add', ['accept' => 'application/json']);

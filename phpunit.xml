@@ -10,7 +10,7 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="Application Test Suite">
-            <directory suffix="Test.php">./tests</directory>
+            <directory suffix="Test.php">./tests/integration</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -25,7 +25,7 @@
         <env name="DB_DATABASE" value="email_service_test"/>
     </php>
     <logging>
-        <log type="coverage-html" target="test/_reports/coverage" charset="UTF-8" yui="true" highlight="true"
+        <log type="coverage-html" target="test/_reports/coverage"
              lowUpperBound="35" highLowerBound="70"/>
         <log type="testdox-html" target="test/_reports/coverage/index.html"/>
     </logging>

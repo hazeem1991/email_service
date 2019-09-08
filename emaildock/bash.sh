@@ -13,5 +13,5 @@ docker  exec -w /var/www/resources/front EmailService_Core npm install
 docker  exec -w /var/www/resources/front EmailService_Core npm run build
 chmod 777 -R /var/www/storage
 docker  exec -w /var/www/ EmailService_Core php artisan cache:clear
-docker  exec -w /var/www/ EmailService_Core php artisan migrate:reset --env=testing
+docker  exec -w /var/www/ EmailService_Core php artisan migrate:fresh --env=testing
 docker  exec -w /var/www/ EmailService_Core ./vendor/bin/phpunit --testdox

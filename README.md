@@ -32,6 +32,10 @@ will serve the vue js app to view logs , list messages and add new messages
 system can send message by command  
 ```
 php artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'  
+```  
+note this command should be executed in the container  
+```
+docker  exec -w /var/www/resources/front EmailService_Core php artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'
 ```
  ## How it work ?
  this microservice will run a job each time you add a new message  

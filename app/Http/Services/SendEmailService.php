@@ -28,6 +28,6 @@ class SendEmailService
     public function sendEmail(array $data): void
     {
         $message = $this->messages->AddNewMessage($data);
-        dispatch(new EmailSenderJob($message, $logs,$providers));
+        dispatch(new EmailSenderJob($message, $this->logs,$this->providers));
     }
 }

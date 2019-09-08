@@ -9,11 +9,9 @@ to install this microservice system need to have only docker docker-compose
 ```$xslt
 git clone https://github.com/hazeem1991/email_service.git
 ```
-after Cloning move to this folder ``./emaildock``and run this command 
-```
-docker-compose up --force-recreate   --remove-orphan -d mysql workspace php-fpm nginx 
-```
-and then run the ``bash.sh`` file  
+after Cloning move to this folder ``./emaildock``  
+and run the bash file
+``bash.sh``  
 if windows run the ``bat.bat`` file
 #### API endpoints
 * add provider account `provider_account/add`

@@ -1,4 +1,5 @@
 #!/bin/bash
+docker-compose up --force-recreate   --remove-orphan -d mysql workspace php-fpm nginx
 docker  exec -w /var/www/ EmailService_Core composer install
 docker  exec -w /var/www/ EmailService_Core php artisan migrate
 docker  exec -w /var/www/ EmailService_Core php artisan migrate --env=testing

@@ -23,7 +23,7 @@ class MailjetMailer implements Mailer
     public function __construct(ProviderAccount $account)
     {
         $this->account = $account;
-        $this->sender = new Client($account->username, $account->password, true, ["version" => "v3.1"]);
+        $this->sender = new Client($account->getOriginal('username'), $account->getOriginal('password'), true, ["version" => "v3.1"]);
         $this->mail = [
             "Messages" => [
                 [

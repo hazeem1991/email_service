@@ -22,7 +22,7 @@ class SendGridMailer implements Mailer
     public function __construct(ProviderAccount $account)
     {
         $this->account = $account;
-        $this->sender = new SendGrid($account->password);
+        $this->sender = new SendGrid($account->getOriginal('password'));
         $this->mail = new Mail();
     }
     /**

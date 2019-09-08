@@ -7,28 +7,9 @@ class ProviderAccountUnitTest extends TestCase
 {
     use DatabaseMigrations, DatabaseTransactions;
 
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testListProviderAccount()
-    {
-
-    }
-
     public function testAddProviderAccount()
     {
-
-    }
-
-    public function testEditProviderAccount()
-    {
-
-    }
-
-    public function testDeleteProviderAccount()
-    {
-
+        $message=factory(ProviderAccount::class)->make();
+        $this->seeInDatabase('email_provider_accounts', ['id' => $message->id]);
     }
 }

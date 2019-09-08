@@ -35,7 +35,7 @@
                             <span class="badge badge-secondary">Added</span>
                         </div>
                         <div v-else-if="message.status === '1'">
-                            <span class="badge badge-warning">In Queue</span>
+                            <span class="badge badge-warning">Sending</span>
                         </div>
                         <div v-else-if="message.status === '2'">
                             <span class="badge badge-success">Sent</span>

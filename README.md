@@ -12,7 +12,9 @@ git clone https://github.com/hazeem1991/email_service.git
 after Cloning move to this folder ``./emaildock``  
 and run the bash file
 ``bash.sh``  
-if windows run the ``bat.bat`` file
+if windows run the ``bat.bat`` file  
+after installing user should add provider account so he can send a new messages  
+if there is no provider the email will not sent 
 #### API endpoints
 * add provider account `provider_account/add`
 * edit provider account `provider_account/edit/1`

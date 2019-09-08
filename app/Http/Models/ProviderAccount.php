@@ -9,12 +9,24 @@ class ProviderAccount extends Model
 {
     protected $table = "email_provider_accounts";
     protected $fillable = ["status", "type", "username", "password", "priority"];
-    public function getUsernameAttribute($value)
+
+    /**
+     * For mask the user name before displaying it
+     * @param $value string user name
+     * @return  string
+     */
+    public function getUsernameAttribute(string $value): string
     {
-        return base64_encode(Str::random(10)).base64_encode($value).base64_encode(Str::random(10));
+        return base64_encode(Str::random(10)) . base64_encode($value) . base64_encode(Str::random(10));
     }
-    public function getPasswordAttribute($value)
+
+    /**
+     * For mask the password before displaying it
+     * @param $value string password
+     * @return  string
+     */
+    public function getPasswordAttribute(string $value): string
     {
-        return base64_encode(Str::random(10)).base64_encode($value).base64_encode(Str::random(10));
+        return base64_encode(Str::random(10)) . base64_encode($value) . base64_encode(Str::random(10));
     }
 }

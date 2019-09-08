@@ -10,8 +10,14 @@ interface LogsRepositoryInterface
     /**
      * Get's all Logs.
      *
-     * @return mixed
+     * @return Collection
      */
     public function getLogList(): Collection;
 
+    /**
+     * add log to the database.
+     * @param array $data log fields
+     * @return Log
+     */
+    public function addToLog(array $data): Log;
 }

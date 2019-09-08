@@ -16,6 +16,10 @@ class MailjetMailer implements Mailer
     public $result;
     public $account;
 
+    /**
+     * mailjet constructor
+     * @param ProviderAccount $account object of the Selected Provider Account
+     */
     public function __construct(ProviderAccount $account)
     {
         $this->account = $account;
@@ -36,6 +40,12 @@ class MailjetMailer implements Mailer
         ];
     }
 
+    /**
+     * set the message body
+     * @param string type message type
+     * @param string body
+     * @return Mailer
+     */
     public function setBody(string $type, string $body): Mailer
     {
         if ($type == "html") {
@@ -46,24 +56,46 @@ class MailjetMailer implements Mailer
         return $this;
     }
 
+    /**
+     * set the message sender
+     * @param string email
+     * @param string name
+     * @return Mailer
+     */
     public function setSender(string $email, string $name = null): Mailer
     {
         $this->mail["Messages"][0]["From"] = ["Email" => $email];
         return $this;
     }
 
+    /**
+     * set the message recipient
+     * @param string email
+     * @param string name
+     * @return Mailer
+     */
     public function addRecipient(string $email, string $name = null): Mailer
     {
         $this->mail["Messages"][0]["To"][] = ["Email" => $email];
         return $this;
     }
 
+    /**
+     * set the message subject
+     * @param string subject
+     * @return Mailer
+     */
     public function setSubject(string $subject): Mailer
     {
         $this->mail["Messages"][0]["Subject"] = $subject;
         return $this;
     }
 
+    /**
+     * set send the message
+     * @param Message message object
+     * @return MailerResult
+     */
     public function send(Message $message): MailerResult
     {
 

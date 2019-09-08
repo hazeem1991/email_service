@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Collection;
 interface MessagesRepositoryInterface
 {
     /**
-     * Get's all Messages.
+     * function get list of messages
      *
-     * @return mixed
+     * @return Collection
      */
     public function getAllMessages(): Collection;
 
     /**
-     * Get's all Messages.
-     *
+     * function to add message
+     * @param array $data the message fields
      * @return mixed
      */
     public function AddNewMessage(array $data);

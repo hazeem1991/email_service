@@ -19,21 +19,32 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 $factory->define(App\Http\Models\Message::class, function ($faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        "type"=> "html",
+        "body"=> $faker->text,
+        "recipients"=> $faker->email,
+        "subject"=> $faker->text,
+        "status"=> "3",
+        "sender"=> $faker->email,
     ];
 });
 $factory->define(App\Http\Models\ProviderAccount::class, function ($faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        "status"=> 1,
+        "priority"=> 2,
+        "type"=> "Mailjet",
+        "username"=> $faker->name,
+        "password"=> $faker->name,
     ];
 });
 
 $factory->define(App\Http\Models\Log::class, function ($faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        "sender"=>$faker->email,
+        "recipients"=>$faker->email,
+        "rawResponse"=>"",
+        "provider"=>2,
+        "message"=> $faker->text,
+        "status"=>0,
     ];
 });
 

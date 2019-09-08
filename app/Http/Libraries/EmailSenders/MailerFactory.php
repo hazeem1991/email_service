@@ -8,7 +8,11 @@ use App\Http\Libraries\EmailSenders\MailJet\MailjetMailer;
 
 class MailerFactory
 {
-
+    /**
+     * mailer factory to get tha provider account object
+     * @param ProviderAccount $account provider account object
+     * @return Mailer the interface of the provider account corosbunding mailer
+    */
     public static function getMailer(ProviderAccount $account): Mailer
     {
         $senders_available = \MainServiceProvider::getSenders();

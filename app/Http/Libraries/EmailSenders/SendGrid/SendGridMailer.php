@@ -15,14 +15,22 @@ class SendGridMailer implements Mailer
     private $mail;
     private $result;
     public $account;
-
+    /**
+     * sendgrid constructor
+     * @param ProviderAccount $account object of the Selected Provider Account
+     */
     public function __construct(ProviderAccount $account)
     {
         $this->account = $account;
         $this->sender = new SendGrid($account->password);
         $this->mail = new Mail();
     }
-
+    /**
+     * set the message body
+     * @param string type message type
+     * @param string body
+     * @return Mailer
+     */
     public function setBody(string $type, string $body): Mailer
     {
         $this->mail->addContent(
@@ -30,25 +38,43 @@ class SendGridMailer implements Mailer
         );
         return $this;
     }
-
+    /**
+     * set the message sender
+     * @param string email
+     * @param string name
+     * @return Mailer
+     */
     public function setSender(string $email, string $name = null): Mailer
     {
         $this->mail->setFrom($email);
         return $this;
     }
-
+    /**
+     * set the message recipient
+     * @param string email
+     * @param string name
+     * @return Mailer
+     */
     public function addRecipient(string $email, string $name = null): Mailer
     {
         $this->mail->addTo($email);
         return $this;
     }
-
+    /**
+     * set the message subject
+     * @param string subject
+     * @return Mailer
+     */
     public function setSubject(string $subject): Mailer
     {
         $this->mail->setSubject($subject);
         return $this;
     }
-
+    /**
+     * set send the message
+     * @param Message message object
+     * @return MailerResult
+     */
     public function send(Message $message): MailerResult
     {
         $this->setSender($message->sender)

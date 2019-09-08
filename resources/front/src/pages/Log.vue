@@ -24,9 +24,13 @@
                     <td>{{log.id}}</td>
                     <td>{{log.sender}}</td>
                     <td>{{log.recipients}}</td>
-                    <td> <b-button v-b-tooltip.hover :title=log.rawResponse >View Response</b-button></td>
+                    <td>
+                        <b-button v-b-tooltip.hover :title=log.rawResponse>View Response</b-button>
+                    </td>
                     <td>{{log.provider}}</td>
-                    <td><b-button v-b-tooltip.hover :title=log.message >View Message</b-button></td>
+                    <td>
+                        <b-button v-b-tooltip.hover :title=log.message>View Message</b-button>
+                    </td>
                     <td>{{log.created_at}}</td>
                     <td>
                         <div v-if="log.status === 0">
@@ -53,7 +57,7 @@
         created() {
             $axios.get(`${Config['serverLink']}/log/`)
                 .then((response) => {
-                    this.logs=response.data.data;
+                    this.logs = response.data.data;
                 }, (error) => {
                     this.$toasted.global.my_app_error({
                         message: error.response.data.message

@@ -15,7 +15,8 @@
                                 <span class="input-group-text" v-b-tooltip.hover
                                       title="For some providers you MUST use the email that you register with">!</span>
                             </div>
-                            <input type="email" class="form-control" id="SenderEmail" name="SenderEmail"
+                            <input type="email" v-model="SenderEmail" class="form-control" id="SenderEmail"
+                                   name="SenderEmail"
                                    placeholder="Sender Email"
                                    required>
                         </div>
@@ -27,7 +28,8 @@
                                 <span class="input-group-text" v-b-tooltip.hover
                                       title="For more than one recipient seperate emails with `,` comma">!</span>
                             </div>
-                            <input type="text" class="form-control" id="RecipientEmail" name="RecipientEmail"
+                            <input type="text" v-model="RecipientEmail" class="form-control" id="RecipientEmail"
+                                   name="RecipientEmail"
                                    placeholder="Recipient"
                                    required>
                         </div>
@@ -35,14 +37,16 @@
                     <div class="col-md-3 mb-3">
                         <label for="Subject">Subject</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Subject"
+                            <input type="text" class="form-control" v-model="Subject" id="Subject" name="Subject"
+                                   placeholder="Subject"
                                    required>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="Type">Type</label>
                         <div class="input-group">
-                            <select id="Type" name="Type" class="form-control" @change="onChange($event)">
+                            <select id="Type" name="Type" v-model="Type" class="form-control"
+                                    @change="onChange($event)">
                                 <option>Select Type</option>
                                 <option v-for="message_type in message_types" v-bind:key="message_type"
                                         :value=message_type>{{message_type}}
@@ -51,7 +55,7 @@
                         </div>
                     </div>
                     <div class="col-md-12 message-container" v-if="message_type==='plain'">
-                        <textarea id="Body" name="Body"></textarea>
+                        <textarea id="Body" v-model="Body" name="Body"></textarea>
                     </div>
                     <div class="col-md-12 message-container" v-if="message_type==='html'">
                         <ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></ckeditor>
@@ -82,15 +86,15 @@
         methods: {
             submit(event) {
                 event.preventDefault();
-                let sender = event.target.elements.SenderEmail.value;
-                let recipients = event.target.elements.RecipientEmail.value;
-                let type = event.target.elements.Type.value;
-                let subject = event.target.elements.Subject.value;
+                let sender = this.SenderEmail;
+                let recipients = this.RecipientEmail;
+                let type = this.Type;
+                let subject = this.Subject;
                 let body;
                 if (type === 'html') {
                     body = this.editorData
                 } else if (type === 'plain') {
-                    body = this.event.target.elements.Body.value;
+                    body = this.Body;
                 }
                 let data = {
                     sender: sender,
@@ -106,7 +110,6 @@
                         });
                         this.$router.push('/messages')
                     }, (error) => {
-                        console.log(error.response.data.errors);
                         Object.keys(error.response.data.errors).map((value) => {
                             this.$toasted.global.my_app_error({
                                 message: error.response.data.errors[value][0]
@@ -142,6 +145,13 @@
                 },
                 editor: ClassicEditor,
                 editorData: '<p></p>',
+                Subject: "",
+                SenderEmail: "",
+                RecipientEmail: "",
+                Type: "plain",
+                Body: ""
+
+
             }
         }
     }

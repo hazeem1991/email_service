@@ -31,7 +31,7 @@ will serve the vue js app to view logs , list messages and add new messages
 #### Artisan Command  
 system can send message by command  
 ```
-artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'  
+php artisan sendmail 'sender@mail.com' 'recipent@mail.com' 'Subject' 'Body'  
 ```
  ## How it work ?
  this microservice will run a job each time you add a new message  

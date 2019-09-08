@@ -82,14 +82,6 @@ Vue.toasted.register('my_app_done',
     },
     options_done
 );
-// new Vue({
-//     el: '#app',
-//     // router,
-//     components: { App }
-// })
-// new Vue({
-//     router,
-// }).$mount('#app');
 new Vue({
     router,
     data: {

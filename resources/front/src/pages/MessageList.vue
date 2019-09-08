@@ -6,7 +6,8 @@
             </div>
         </div>
         <div class="card-body">
-            <router-link class="btn btn-primary" style="margin-bottom: 10px" to="/new-message">Add New Message</router-link>
+            <router-link class="btn btn-primary" style="margin-bottom: 10px" to="/new-message">Add New Message
+            </router-link>
             <table class="table">
                 <thead>
                 <tr>
@@ -63,7 +64,7 @@
         created() {
             $axios.get(`${Config['serverLink']}/messages/`)
                 .then((response) => {
-                    this.messages=response.data.data;
+                    this.messages = response.data.data;
                 }, (error) => {
                     this.$toasted.global.my_app_error({
                         message: error.response.data.message

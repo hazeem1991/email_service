@@ -3,7 +3,6 @@
 Homestead.json
 Homestead.yaml
 /test
-/public/front_raw/node_modules
-/public/front_raw/package-lock.json
-/public/front/node_modules
-/public/front/package-lock.json
+/public/front
+/resources/front/node_modules
+/resources/front/package-lock.json

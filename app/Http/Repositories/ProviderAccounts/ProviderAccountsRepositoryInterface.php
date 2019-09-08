@@ -43,4 +43,10 @@ interface ProviderAccountsRepositoryInterface
      */
     public function deleteAccount(int $id): bool;
 
+    /**
+     * get providers that status = 1 and sorted by priority
+     * @return bool
+     */
+    public function getAvailableProviders(): Collection;
+
 }

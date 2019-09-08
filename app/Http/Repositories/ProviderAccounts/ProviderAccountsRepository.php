@@ -61,4 +61,14 @@ class ProviderAccountsRepository implements ProviderAccountsRepositoryInterface
         $provider = ProviderAccount::findOrfail($id);
         return $provider->delete();
     }
+
+    /**
+     * get providers that status = 1 and sorted by priority
+     * @return bool
+     */
+    public function getAvailableProviders(): Collection
+    {
+        $accounts = ProviderAccount::where("status", "=", 1)->orderBy("priority", "ASC")->get();
+        return $accounts;
+    }
 }
